@@ -9,8 +9,14 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
+# Configure launch_with_vendor_ramdisk.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+
+# Configure emulated_storage.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from ossi device
 $(call inherit-product, device/oplus/twrp/device.mk)
@@ -22,3 +28,6 @@ PRODUCT_MODEL := ossi
 PRODUCT_MANUFACTURER := oplus
 
 PRODUCT_GMS_CLIENTID_BASE := android-oplus
+
+# Hide Reflash TWRP
+PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
