@@ -6,7 +6,45 @@
 #
 
 LOCAL_PATH := device/oplus/ossi
+
+
 # A/B
+AB_OTA_UPDATER := true
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
+AB_OTA_PARTITIONS += \
+    apusys \
+    audio_dsp \
+    boot \
+    ccu \
+    dpm \
+    dtbo \
+    gpueb \
+    gz \
+    lk \
+    logo \
+    mcf_ota \
+    mcupm \
+    md1img \
+    mvpu_algo \
+    odm \
+    odm_dlkm \
+    pi_img \
+    preloader_raw \
+    product \
+    scp \
+    spmfw \
+    sspm \
+    system \
+    system_ext \
+    tee \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor \
+    vcp \
+    vendor \
+    vendor_boot \
+    vendor_dlkm \
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
@@ -16,10 +54,12 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.2-impl.recovery \
     android.hardware.boot@1.0-service
 
 PRODUCT_PACKAGES += \
-    bootctrl.mt6983
+    bootctrl.mt6983 \
+    bootctrl.mt6983.recovery
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
     bootctrl.mt6983 \
@@ -33,3 +73,43 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+# Additional Target Libraries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.graphics.common@1.0 \
+    libion \
+    libxml2
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.graphics.common@1.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
+
+# fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.1-impl-mock \
+    fastbootd
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
+# Mtk plpath utils
+PRODUCT_PACKAGES += \
+    mtk_plpath_utils \
+    mtk_plpath_utils.recovery
+
+# Drm
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.4    
+
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
+# Hidl Service
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
+
+# Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
