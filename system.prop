@@ -11,9 +11,9 @@ ro.sys.usb.storage.type=mtp
 ro.adb.secure=0
 
 # MTK
-ro.vendor.mediatek.platform=MT6833
-ro.hardware=mt6833
+ro.vendor.mediatek.platform=MT6983
+ro.hardware=mt6983
 
 # Board
-ro.product.device=gold
-ro.build.product=gold
+ro.product.device=ossi
+ro.build.product=ossi
