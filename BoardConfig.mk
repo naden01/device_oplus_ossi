@@ -95,6 +95,7 @@ BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_MAIN_PARTITION_LIST := system vendor product system_ext odm vendor_dlkm odm_dlkm
 BOARD_MAIN_SIZE := 9122611200 # TODO: Fix hardcoded value
 
+# BOARD_MAIN_PARTITION_LIST := $(call to-upper, $(BOARD_MAIN_PARTITION_LIST))
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := erofs))
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
 
