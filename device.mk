@@ -60,12 +60,6 @@ PRODUCT_PACKAGES += \
     bootctrl.mt6983 \
     bootctrl.mt6983.recovery
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.mt6983 \
-    libgptutils \
-    libz \
-    libcutils
-
 PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
