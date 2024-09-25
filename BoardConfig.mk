@@ -92,7 +92,7 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := main
-BOARD_MAIN_PARTITION_LIST := vendor product system_ext odm vendor_dlkm odm_dlkm
+BOARD_MAIN_PARTITION_LIST := system vendor product system_ext odm vendor_dlkm odm_dlkm
 BOARD_MAIN_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 BOARD_MAIN_PARTITION_LIST := $(call to-upper, $(BOARD_MAIN_PARTITION_LIST))
